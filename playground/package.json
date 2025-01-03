@@ -18,6 +18,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
+    "strapi-plugin-boilerplate": "link:.yalc/strapi-plugin-boilerplate",
     "styled-components": "^6.0.0"
   },
   "devDependencies": {
