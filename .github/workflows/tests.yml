@@ -24,12 +24,14 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn --frozen-lockfile
-      - name: Verify plugin code
-        run: yarn verify
       - name: Run Typescript checks (front-end)
         run: yarn test:ts:front
       - name: Run Typescript checks (back-end)
         run: yarn test:ts:back
+      - name: Build the plugin
+        run: yarn build
+      - name: Verify plugin code
+        run: yarn verify
   test:
     name: 'test'
     needs: [lint]
