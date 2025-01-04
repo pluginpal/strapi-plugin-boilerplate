@@ -1,12 +1,10 @@
 <div style="text-align: center">
 	<h1>Strapi Plugin Boilerplate</h1>
 	<h5>A test-driven template for building reliable Strapi Plugins</h5>
-	
-	<p>
-  <a href="https://codecov.io/gh/pluginpal/strapi-plugin-boilerplate">
-    <img src="https://img.shields.io/github/actions/workflow/status/pluginpal/strapi-plugin-boilerplate/tests.yml?branch=main" alt="CI build status" />
-  </a>
-</p>
+
+	<a href="https://codecov.io/gh/pluginpal/strapi-plugin-boilerplate">
+		<img src="https://img.shields.io/github/actions/workflow/status/pluginpal/strapi-plugin-boilerplate/tests.yml?branch=main" alt="CI build status" />
+	</a>
 </div>
 
 ## ✨ Features
@@ -15,8 +13,8 @@
 - [x] An isolated Strapi instance for testing and development, the Playground.
 - [x] Github Actions workflow for linting and testing.
 - [x] Clear community files like [CONTRIBUTING.md](https://github.com/pluginpal/strapi-plugin-boilerplate/blob/main/CONTRIBUTING.md) and [CODE-OF-CONDUCT.md](https://github.com/pluginpal/strapi-plugin-boilerplate/blob/main/CODE_OF_CONDUCT.md).
-- [] Jest & Supertest for testing your plugin API's.
-- [] Cypress for GUI e2e tests
+- [ ] Jest & Supertest for testing your plugin API's.
+- [ ] Cypress for GUI e2e tests
 
 ## ⏳ How to use
 
