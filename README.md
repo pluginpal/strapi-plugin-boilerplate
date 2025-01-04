@@ -1,4 +1,4 @@
-<div style="text-align: center">
+<div align="center">
   <h1>Strapi Plugin Boilerplate</h1>
   <h5>A test-driven template for building reliable Strapi Plugins</h5>
 
