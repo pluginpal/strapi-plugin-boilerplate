@@ -1,10 +1,10 @@
 <div style="text-align: center">
-	<h1>Strapi Plugin Boilerplate</h1>
-	<h5>A test-driven template for building reliable Strapi Plugins</h5>
+  <h1>Strapi Plugin Boilerplate</h1>
+  <h5>A test-driven template for building reliable Strapi Plugins</h5>
 
-	<a href="https://codecov.io/gh/pluginpal/strapi-plugin-boilerplate">
-		<img src="https://img.shields.io/github/actions/workflow/status/pluginpal/strapi-plugin-boilerplate/tests.yml?branch=main" alt="CI build status" />
-	</a>
+  <a href="https://codecov.io/gh/pluginpal/strapi-plugin-boilerplate">
+    <img src="https://img.shields.io/github/actions/workflow/status/pluginpal/strapi-plugin-boilerplate/tests.yml?branch=main" alt="CI build status" />
+  </a>
 </div>
 
 ## ✨ Features
@@ -41,43 +41,43 @@ To better understand how and why this repository has been setup, please read the
 ### Strapi Plugin SDK commands
 
 1. `yarn build`
-	- The native build command of `@strapi/sdk-plugin`.
-	- [Documentation can be found here](https://docs.strapi.io/dev-docs/plugins/development/plugin-sdk).
+  - The native build command of `@strapi/sdk-plugin`.
+  - [Documentation can be found here](https://docs.strapi.io/dev-docs/plugins/development/plugin-sdk).
 2. `yarn watch`
-	- The native watch command of `@strapi/sdk-plugin`.
-	- [Documentation can be found here](https://docs.strapi.io/dev-docs/plugins/development/plugin-sdk).
+  - The native watch command of `@strapi/sdk-plugin`.
+  - [Documentation can be found here](https://docs.strapi.io/dev-docs/plugins/development/plugin-sdk).
 3. `yarn watch:link`
-	- The native watch:link command of `@strapi/sdk-plugin`.
-	- [Documentation can be found here](https://docs.strapi.io/dev-docs/plugins/development/plugin-sdk).
+  - The native watch:link command of `@strapi/sdk-plugin`.
+  - [Documentation can be found here](https://docs.strapi.io/dev-docs/plugins/development/plugin-sdk).
 4. `yarn verify`
-	- The native verify command of `@strapi/sdk-plugin`.
-	- [Documentation can be found here](https://docs.strapi.io/dev-docs/plugins/development/plugin-sdk).
-	- Used in the linting step of the pipeline.
+  - The native verify command of `@strapi/sdk-plugin`.
+  - [Documentation can be found here](https://docs.strapi.io/dev-docs/plugins/development/plugin-sdk).
+  - Used in the linting step of the pipeline.
 
 ### Testing commands
 
 5. `yarn test:ts:front`
-	- A check for Typescript errors on the front-end side.
-	- Used in the linting step of the pipeline.
+  - A check for Typescript errors on the front-end side.
+  - Used in the linting step of the pipeline.
 6. `yarn test:ts:back`
-	- A check for Typescript errors on the back-end side.
-	- Used in the linting step of the pipeline.
+  - A check for Typescript errors on the back-end side.
+  - Used in the linting step of the pipeline.
 
 ### Playground commands
 
 7. `yarn playground:install`
-	- Installs the plugin into the playground using `yalc-add-link`.
-	- Installs all other dependencies of the playground.
+  - Installs the plugin into the playground using `yalc-add-link`.
+  - Installs all other dependencies of the playground.
 8. `yarn playground:yalc-add`
-	- Installs a production-like version of the plugin, into the playground.
+  - Installs a production-like version of the plugin, into the playground.
 9. `yarn playground:yalc-add-link`
-	- Installs a development build of the plugin, into the playground.
+  - Installs a development build of the plugin, into the playground.
 10. `yarn playground:build`
-	- The native Strapi build command, ran in the playground.
-	- [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
+  - The native Strapi build command, ran in the playground.
+  - [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
 11. `yarn playground:develop`
-	- The native Strapi develop command, ran in the playground.
-	- [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
+  - The native Strapi develop command, ran in the playground.
+  - [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
 12. `yarn playground:start`
-	- The native Strapi start command, ran in the playground.
-	- [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
+  - The native Strapi start command, ran in the playground.
+  - [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
