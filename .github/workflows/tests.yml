@@ -55,3 +55,5 @@ jobs:
         run: cd playground && yarn install --unsafe-perm
       - name: Build playground
         run: yarn playground:build
+      - name: Run jest
+        run: yarn test:jest
