@@ -29,6 +29,7 @@
     "verify": "strapi-plugin verify",
     "test:ts:front": "tsc -p admin/tsconfig.json",
     "test:ts:back": "tsc -p server/tsconfig.json",
+    "test:jest": "jest --verbose --runInBand --forceExit",
     "playground:install": "yarn playground:yalc-add-link && cd playground && yarn install",
     "playground:yalc-add": "cd playground && yalc add strapi-plugin-boilerplate",
     "playground:yalc-add-link": "cd playground && yalc add --link strapi-plugin-boilerplate",
@@ -47,9 +48,11 @@
     "@strapi/typescript-utils": "^5.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "jest": "^29.7.0",
     "prettier": "^3.4.2",
     "react": "^19.0.0",
     "react-router-dom": "^6.0.0",
+    "supertest": "^7.0.0",
     "typescript": "^5.7.2"
   },
   "peerDependencies": {

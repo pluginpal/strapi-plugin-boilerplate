@@ -52,32 +52,35 @@ To better understand how and why this repository has been setup, please read the
 4. `yarn verify`
   - The native verify command of `@strapi/sdk-plugin`.
   - [Documentation can be found here](https://docs.strapi.io/dev-docs/plugins/development/plugin-sdk).
-  - Used in the linting step of the pipeline.
+  - Used in the lint step of the pipeline.
 
 ### Testing commands
 
 5. `yarn test:ts:front`
   - A check for Typescript errors on the front-end side.
-  - Used in the linting step of the pipeline.
+  - Used in the lint step of the pipeline.
 6. `yarn test:ts:back`
   - A check for Typescript errors on the back-end side.
-  - Used in the linting step of the pipeline.
+  - Used in the lint step of the pipeline.
+7. `yarn test:jest`
+  - Runs the jest tests. Can contain unit & integration tests.
+  - Used in the test step of the pipeline.
 
 ### Playground commands
 
-7. `yarn playground:install`
+8. `yarn playground:install`
   - Installs the plugin into the playground using `yalc-add-link`.
   - Installs all other dependencies of the playground.
-8. `yarn playground:yalc-add`
+9. `yarn playground:yalc-add`
   - Installs a production-like version of the plugin, into the playground.
-9. `yarn playground:yalc-add-link`
+10. `yarn playground:yalc-add-link`
   - Installs a development build of the plugin, into the playground.
-10. `yarn playground:build`
+11. `yarn playground:build`
   - The native Strapi build command, ran in the playground.
   - [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
-11. `yarn playground:develop`
+12. `yarn playground:develop`
   - The native Strapi develop command, ran in the playground.
   - [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
-12. `yarn playground:start`
+13. `yarn playground:start`
   - The native Strapi start command, ran in the playground.
   - [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
