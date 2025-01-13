@@ -1,11 +1,10 @@
-export default [
-  {
-    method: 'GET',
-    path: '/',
-    // name of the controller file & the method.
-    handler: 'controller.index',
-    config: {
-      policies: [],
-    },
+import contentAPIRoutes from './content-api';
+
+const routes = {
+  'content-api': {
+    type: 'content-api',
+    routes: contentAPIRoutes,
   },
-];
+};
+
+export default routes;
