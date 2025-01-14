@@ -18,3 +18,9 @@ it('should return a successful response from the example endpoint', async () => 
 
   expect(response.text).toBe('Welcome to Strapi 🚀');
 });
+
+it('should return the correct message from the example service', async () => {
+  const welcomeMessage = strapi.service('plugin::boilerplate.service').getWelcomeMessage();
+
+  expect(welcomeMessage).toBe('Welcome to Strapi 🚀');
+});
