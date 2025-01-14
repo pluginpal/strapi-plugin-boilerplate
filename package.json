@@ -29,7 +29,7 @@
     "verify": "strapi-plugin verify",
     "test:ts:front": "tsc -p admin/tsconfig.json",
     "test:ts:back": "tsc -p server/tsconfig.json",
-    "test:jest": "jest --verbose --runInBand --forceExit",
+    "test:jest": "ENV_PATH=./playground/.env  jest --verbose --runInBand --forceExit",
     "playground:install": "yarn playground:yalc-add-link && cd playground && yarn install",
     "playground:yalc-add": "cd playground && yalc add strapi-plugin-boilerplate",
     "playground:yalc-add-link": "cd playground && yalc add --link strapi-plugin-boilerplate",
