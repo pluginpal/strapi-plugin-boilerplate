@@ -55,12 +55,12 @@ jobs:
         run: cd playground && yarn install --unsafe-perm
       - name: Build playground
         run: yarn playground:build
-      - name: Run jest
+      - name: Run Jest tests
         run: yarn test:jest
-      - name: Run end-to-end tests
+      - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
-          build: yarn playground:build
+          build: yarn playground:build && yarn playground:yalc-add && yarn playground:install
           start: yarn playground:start
       - uses: actions/upload-artifact@v4
         if: failure()
