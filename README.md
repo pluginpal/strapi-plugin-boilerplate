@@ -68,22 +68,24 @@ To better understand how and why this repository has been setup, please read the
 8. `yarn test:cypress`
   - Runs the cypress tests. Contains e2e tests.
   - Used in the test step of the pipeline.
+9. `yarn test:cypress:open`
+  - Opens the cypress GUI.
 
 ### Playground commands
 
-9. `yarn playground:install`
+10. `yarn playground:install`
   - Installs the plugin into the playground using `yalc-add-link`.
   - Installs all other dependencies of the playground.
-10. `yarn playground:yalc-add`
+11. `yarn playground:yalc-add`
   - Installs a production-like version of the plugin, into the playground.
-11. `yarn playground:yalc-add-link`
+12. `yarn playground:yalc-add-link`
   - Installs a development build of the plugin, into the playground.
-12. `yarn playground:build`
+13. `yarn playground:build`
   - The native Strapi build command, ran in the playground.
   - [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
-13. `yarn playground:develop`
+14. `yarn playground:develop`
   - The native Strapi develop command, ran in the playground.
   - [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
-14. `yarn playground:start`
+15. `yarn playground:start`
   - The native Strapi start command, ran in the playground.
   - [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
