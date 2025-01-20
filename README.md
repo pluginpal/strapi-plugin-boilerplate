@@ -14,7 +14,7 @@
 - [x] Github Actions workflow for linting and testing.
 - [x] Clear community files like [CONTRIBUTING.md](https://github.com/pluginpal/strapi-plugin-boilerplate/blob/main/CONTRIBUTING.md) and [CODE-OF-CONDUCT.md](https://github.com/pluginpal/strapi-plugin-boilerplate/blob/main/CODE_OF_CONDUCT.md).
 - [x] Jest & Supertest for testing your plugin API's.
-- [ ] Cypress for GUI e2e tests
+- [x] Cypress for GUI e2e tests
 
 ## ⏳ How to use
 
@@ -65,22 +65,25 @@ To better understand how and why this repository has been setup, please read the
 7. `yarn test:jest`
   - Runs the jest tests. Can contain unit & integration tests.
   - Used in the test step of the pipeline.
+8. `yarn test:cypress`
+  - Runs the cypress tests. Contains e2e tests.
+  - Used in the test step of the pipeline.
 
 ### Playground commands
 
-8. `yarn playground:install`
+9. `yarn playground:install`
   - Installs the plugin into the playground using `yalc-add-link`.
   - Installs all other dependencies of the playground.
-9. `yarn playground:yalc-add`
+10. `yarn playground:yalc-add`
   - Installs a production-like version of the plugin, into the playground.
-10. `yarn playground:yalc-add-link`
+11. `yarn playground:yalc-add-link`
   - Installs a development build of the plugin, into the playground.
-11. `yarn playground:build`
+12. `yarn playground:build`
   - The native Strapi build command, ran in the playground.
   - [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
-12. `yarn playground:develop`
+13. `yarn playground:develop`
   - The native Strapi develop command, ran in the playground.
   - [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
-13. `yarn playground:start`
+14. `yarn playground:start`
   - The native Strapi start command, ran in the playground.
   - [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
