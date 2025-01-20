@@ -1,5 +1,5 @@
 const request = require('supertest');
-const { setupStrapi, stopStrapi } = require('../playground/tests/helpers');
+const { setupStrapi, stopStrapi } = require('../../playground/tests/helpers');
 
 let strapi;
 
