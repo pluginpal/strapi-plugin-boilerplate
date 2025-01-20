@@ -135,3 +135,11 @@ yarn-error.log
 ############################
 
 coverage
+
+############################
+# Cypress
+############################
+
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
