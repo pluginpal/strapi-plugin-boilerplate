@@ -33,10 +33,10 @@
     "test:cypress": "cypress run",
     "test:cypress:open": "cypress open",
     "playground:install": "yarn playground:yalc-add-link && cd playground && yarn install",
+    "playground:install-and-build": "yarn build && cd playground && yalc add strapi-plugin-boilerplate && yarn install && yarn build",
     "playground:yalc-add": "cd playground && yalc add strapi-plugin-boilerplate",
     "playground:yalc-add-link": "cd playground && yalc add --link strapi-plugin-boilerplate",
     "playground:build": "cd playground && yarn build",
-    "playground:install-and-build": "cd playground && yalc add strapi-plugin-boilerplate && yarn install && yarn build",
     "playground:develop": "cd playground && yarn develop",
     "playground:start": "cd playground && yarn start"
   },
