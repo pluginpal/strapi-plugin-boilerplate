@@ -62,7 +62,6 @@ jobs:
         env:
           LIBGL_ALWAYS_SOFTWARE: 1
         with:
-          build: yarn playground:install-and-build
           start: yarn playground:start
       - uses: actions/upload-artifact@v4
         if: failure()
