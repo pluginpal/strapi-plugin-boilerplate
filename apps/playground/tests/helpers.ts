@@ -9,8 +9,8 @@ let instance;
 async function setupStrapi() {
   if (!instance) {
     const app = await createStrapi({
-      appDir: "./playground",
-      distDir: "./playground/dist",
+      appDir: "../../apps/playground",
+      distDir: "../../apps/playground/dist",
     }).load();
 
     instance = app; // strapi is global now
