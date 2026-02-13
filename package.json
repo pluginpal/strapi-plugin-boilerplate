@@ -1,87 +1,20 @@
 {
-  "version": "0.0.0",
-  "keywords": [],
-  "type": "commonjs",
-  "exports": {
-    "./package.json": "./package.json",
-    "./strapi-admin": {
-      "types": "./dist/admin/src/index.d.ts",
-      "source": "./admin/src/index.ts",
-      "import": "./dist/admin/index.mjs",
-      "require": "./dist/admin/index.js",
-      "default": "./dist/admin/index.js"
-    },
-    "./strapi-server": {
-      "types": "./dist/server/src/index.d.ts",
-      "source": "./server/src/index.ts",
-      "import": "./dist/server/index.mjs",
-      "require": "./dist/server/index.js",
-      "default": "./dist/server/index.js"
-    }
-  },
-  "files": [
-    "dist"
-  ],
+  "name": "strapi-plugin-boilerplate-monorepo",
+  "private": true,
   "scripts": {
-    "build": "strapi-plugin build && yalc push --publish",
-    "watch": "strapi-plugin watch",
-    "watch:link": "strapi-plugin watch:link",
-    "verify": "strapi-plugin verify",
-    "test:ts:front": "tsc -p admin/tsconfig.json",
-    "test:ts:back": "tsc -p server/tsconfig.json",
-    "test:jest": "ENV_PATH=./playground/.env  jest --verbose --runInBand --forceExit",
-    "test:cypress": "cypress run",
-    "test:cypress:open": "cypress open",
-    "playground:install": "yarn playground:yalc-add-link && cd playground && yarn install",
-    "playground:yalc-add": "cd playground && yalc add strapi-plugin-boilerplate",
-    "playground:yalc-add-link": "cd playground && yalc add --link strapi-plugin-boilerplate",
-    "playground:build": "cd playground && yarn build",
-    "playground:develop": "cd playground && yarn develop",
-    "playground:start": "cd playground && yarn start"
-  },
-  "dependencies": {
-    "@strapi/design-system": "^2.0.0-rc.14",
-    "@strapi/icons": "^2.0.0-rc.14",
-    "react-intl": "^7.1.0"
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "turbo run format",
+    "test": "turbo run test",
+    "test:e2e": "pnpm --filter e2e test",
+    "playground:build": "pnpm --filter playground build",
+    "playground:develop": "pnpm --filter playground develop",
+    "playground:start": "pnpm --filter playground start"
   },
   "devDependencies": {
-    "@strapi/sdk-plugin": "^5.0.0",
-    "@strapi/strapi": "^5.0.0",
-    "@strapi/typescript-utils": "^5.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "cypress": "^13.9.0",
-    "cypress-terminal-report": "^6.0.2",
-    "jest": "^29.7.0",
-    "prettier": "^3.4.2",
-    "react": "^19.0.0",
-    "react-router-dom": "^6.0.0",
-    "supertest": "^7.0.0",
-    "typescript": "^5.7.2"
+    "@biomejs/biome": "^1.9.0",
+    "turbo": "^2.3.0"
   },
-  "peerDependencies": {
-    "@strapi/strapi": "^5.0.0",
-    "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0",
-    "react-router-dom": "^6.0.0",
-    "styled-components": "^6.0.0"
-  },
-  "strapi": {
-    "kind": "plugin",
-    "name": "boilerplate",
-    "displayName": "Boilerplate",
-    "description": "A test-driven template for building reliable Strapi Plugins"
-  },
-  "name": "strapi-plugin-boilerplate",
-  "description": "A test-driven template for building reliable Strapi Plugins",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/pluginpal/strapi-plugin-boilerplate.git"
-  },
-  "bugs": {
-    "url": "https://github.com/pluginpal/strapi-plugin-boilerplate/issues"
-  },
-  "homepage": "https://github.com/pluginpal/strapi-plugin-boilerplate#readme",
-  "author": "Boaz Poolman <boaz@pluginpal.io>"
+  "packageManager": "pnpm@9.15.0"
 }
