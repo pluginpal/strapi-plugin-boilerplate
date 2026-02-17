@@ -1,0 +1,79 @@
+{
+  "version": "0.0.0",
+  "keywords": [],
+  "type": "commonjs",
+  "exports": {
+    "./package.json": "./package.json",
+    "./strapi-admin": {
+      "types": "./dist/admin/src/index.d.ts",
+      "source": "./admin/src/index.ts",
+      "import": "./dist/admin/index.mjs",
+      "require": "./dist/admin/index.js",
+      "default": "./dist/admin/index.js"
+    },
+    "./strapi-server": {
+      "types": "./dist/server/src/index.d.ts",
+      "source": "./server/src/index.ts",
+      "import": "./dist/server/index.mjs",
+      "require": "./dist/server/index.js",
+      "default": "./dist/server/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "strapi-plugin build",
+    "watch": "strapi-plugin watch",
+    "watch:link": "strapi-plugin watch:link",
+    "verify": "strapi-plugin verify",
+    "test:ts:front": "tsc -p admin/tsconfig.json",
+    "test:ts:back": "tsc -p server/tsconfig.json",
+    "test:jest": "ENV_PATH=../../apps/playground/.env jest --verbose --runInBand --forceExit",
+    "lint": "biome check admin/ server/",
+    "format": "biome check --write admin/ server/"
+  },
+  "dependencies": {
+    "@strapi/design-system": "^2.0.0-rc.14",
+    "@strapi/icons": "^2.0.0-rc.14",
+    "@tanstack/react-query": "^5.62.0",
+    "react-intl": "^7.1.0"
+  },
+  "devDependencies": {
+    "@strapi/sdk-plugin": "^5.0.0",
+    "@strapi/strapi": "^5.0.0",
+    "@strapi/typescript-utils": "^5.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "jest": "^29.7.0",
+    "react": "^19.0.0",
+    "react-router-dom": "^6.0.0",
+    "supertest": "^7.0.0",
+    "typescript": "^5.7.2"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^5.0.0",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "react-router-dom": "^6.0.0",
+    "styled-components": "^6.0.0"
+  },
+  "strapi": {
+    "kind": "plugin",
+    "name": "boilerplate",
+    "displayName": "Boilerplate",
+    "description": "A test-driven template for building reliable Strapi Plugins"
+  },
+  "name": "strapi-plugin-boilerplate",
+  "description": "A test-driven template for building reliable Strapi Plugins",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pluginpal/strapi-plugin-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pluginpal/strapi-plugin-boilerplate/issues"
+  },
+  "homepage": "https://github.com/pluginpal/strapi-plugin-boilerplate#readme",
+  "author": "Boaz Poolman <boaz@pluginpal.io>"
+}
