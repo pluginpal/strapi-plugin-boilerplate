@@ -1,20 +1,28 @@
 {
   "name": "strapi-plugin-boilerplate-monorepo",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "turbo run format",
     "test": "turbo run test",
-    "test:e2e": "pnpm --filter e2e test",
-    "playground:build": "pnpm --filter playground build",
-    "playground:develop": "pnpm --filter playground develop",
-    "playground:start": "pnpm --filter playground start"
+    "test:ts:front": "turbo run test:ts:front",
+    "test:ts:back": "turbo run test:ts:back",
+    "test:jest": "turbo run test:jest",
+    "test:e2e": "yarn workspace e2e test",
+    "verify": "turbo run verify",
+    "playground:build": "yarn workspace playground build",
+    "playground:develop": "yarn workspace playground develop",
+    "playground:start": "yarn workspace playground start"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.0",
     "turbo": "^2.3.0"
   },
-  "packageManager": "pnpm@9.15.0"
+  "packageManager": "yarn@1.22.22"
 }
