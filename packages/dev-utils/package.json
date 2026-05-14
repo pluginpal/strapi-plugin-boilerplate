@@ -10,7 +10,8 @@
   },
   "bin": {
     "with-db": "./bin/with-db.sh",
-    "dev-strapi": "./bin/dev-strapi.sh"
+    "dev-strapi": "./bin/dev-strapi.sh",
+    "rename-plugin": "./bin/rename-plugin.sh"
   },
   "devDependencies": {
     "@playwright/test": "catalog:playwright",

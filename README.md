@@ -62,6 +62,7 @@ A shared internal package used by both test layers:
 | `createPlaywrightConfig(options)` | Returns a full Playwright config with webServer, auth projects, and DB setup |
 | `registerAuthSetup(authFilePath)` | Registers the Playwright auth setup test (login + save session) |
 | `with-db` (bin) | Wraps a command with an ephemeral DB — SQLite file or Postgres/MySQL database — and cleans it up on exit |
+| `rename-plugin` (bin) | Interactive CLI that renames the plugin across the entire repo in one command |
 
 ### Linting
 
@@ -109,11 +110,32 @@ This starts the playground Strapi app with file-watching. Changes to the plugin'
 
 ### Rename the plugin
 
-1. Replace all occurrences of `plugin-boilerplate` with your plugin name in:
-   - `plugins/plugin-boilerplate/package.json` (`name`, `strapi.name`, `strapi.displayName`)
-   - `plugins/plugin-boilerplate/admin/src/pluginId.ts`
-   - `apps/playground/package.json` (the workspace dependency)
-2. Rename the directory `plugins/plugin-boilerplate/` to match
+Run the interactive rename command from the repo root:
+
+```bash
+pnpm rename-plugin
+```
+
+It will prompt you for:
+
+| Prompt | Example |
+|---|---|
+| Plugin name (kebab-case Strapi ID) | `my-awesome-plugin` |
+| Display name | `My Awesome Plugin` |
+| Description | `A Strapi plugin that does X` |
+| NPM scope (without @) | `my-org` |
+| Author name | `Jane Doe` |
+| Author email | `jane@example.com` |
+| GitHub org or username | `my-org` |
+| GitHub repository name | `strapi-plugin-my-awesome-plugin` |
+| License | `MIT` |
+
+Press Enter to keep any current value. When finished, the command updates all references across the repo (package names, plugin IDs, route paths, test URLs, README) and renames the `plugins/` directory. Then run:
+
+```bash
+pnpm install
+pnpm build
+```
 
 ---
 

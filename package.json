@@ -14,6 +14,7 @@
     "test:e2e": "DATABASE_CLIENT=sqlite with-db turbo test:e2e",
     "test:e2e:postgres": "DATABASE_CLIENT=postgres with-db turbo test:e2e",
     "test:e2e:mysql": "DATABASE_CLIENT=mysql with-db turbo test:e2e",
+    "rename-plugin": "rename-plugin",
     "update-dependencies": "pnpm --recursive --interactive --latest update",
     "prepare": "husky"
   },
