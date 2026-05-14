@@ -61,6 +61,7 @@ A shared internal package used by both test layers:
 | `stopStrapi()` | Tears the instance down and cleans up |
 | `createPlaywrightConfig(options)` | Returns a full Playwright config with webServer, auth projects, and DB setup |
 | `registerAuthSetup(authFilePath)` | Registers the Playwright auth setup test (login + save session) |
+| `dev-strapi` (bin) | Starts the playground in dev mode and restarts Strapi automatically whenever compiled plugin output changes |
 | `with-db` (bin) | Wraps a command with an ephemeral DB — SQLite file or Postgres/MySQL database — and cleans it up on exit |
 | `rename-plugin` (bin) | Interactive CLI that renames the plugin across the entire repo in one command |
 
