@@ -1,13 +1,56 @@
 {
-  "$schema": "https://turbo.build/schema.json",
+  "$schema": "https://turborepo.com/schema.json",
+  "ui": "tui",
   "tasks": {
-    "build": { "dependsOn": ["^build"], "outputs": ["dist/**"] },
-    "dev": { "dependsOn": ["^build"], "cache": false, "persistent": true },
-    "lint": {},
-    "format": {},
-    "test:ts:front": {},
-    "test:ts:back": {},
-    "test:jest": { "dependsOn": ["build"], "cache": false },
-    "test:e2e": { "dependsOn": ["build"], "cache": false }
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "lint:ts:admin": {
+      "dependsOn": ["^lint:ts:admin"]
+    },
+    "lint:ts:server": {
+      "dependsOn": ["^lint:ts:server"]
+    },
+    "test:integration": {
+      "cache": false,
+      "passThroughEnv": [
+        "DATABASE_CLIENT",
+        "DATABASE_HOST",
+        "DATABASE_PORT",
+        "DATABASE_NAME",
+        "DATABASE_USERNAME",
+        "DATABASE_PASSWORD",
+        "DATABASE_FILENAME"
+      ]
+    },
+    "test:e2e": {
+      "cache": false,
+      "passThroughEnv": [
+        "DATABASE_CLIENT",
+        "DATABASE_HOST",
+        "DATABASE_PORT",
+        "DATABASE_NAME",
+        "DATABASE_USERNAME",
+        "DATABASE_PASSWORD",
+        "DATABASE_FILENAME"
+      ]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "passThroughEnv": [
+        "DATABASE_CLIENT",
+        "DATABASE_HOST",
+        "DATABASE_PORT",
+        "DATABASE_NAME",
+        "DATABASE_USERNAME",
+        "DATABASE_PASSWORD",
+        "DATABASE_FILENAME"
+      ]
+    }
   }
 }

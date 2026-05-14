@@ -1,0 +1,22 @@
+{
+  "name": "@strapi-community/dev-utils",
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "postinstall": "playwright install chromium --with-deps"
+  },
+  "bin": {
+    "with-db": "./bin/with-db.sh",
+    "dev-strapi": "./bin/dev-strapi.sh"
+  },
+  "devDependencies": {
+    "@playwright/test": "catalog:playwright",
+    "@strapi/strapi": "catalog:strapi",
+    "@strapi/types": "catalog:strapi",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.21.0"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "version": "0.0.0",
+  "keywords": [],
+  "type": "commonjs",
+  "exports": {
+    "./package.json": "./package.json",
+    "./strapi-admin": {
+      "source": "./admin/src/index.ts",
+      "import": "./dist/admin/index.mjs",
+      "require": "./dist/admin/index.js",
+      "default": "./dist/admin/index.js"
+    },
+    "./strapi-server": {
+      "source": "./server/src/index.ts",
+      "import": "./dist/server/index.mjs",
+      "require": "./dist/server/index.js",
+      "default": "./dist/server/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "strapi-plugin build",
+    "watch": "strapi-plugin watch",
+    "dev": "strapi-plugin watch",
+    "verify": "strapi-plugin verify",
+    "test:integration": "vitest run",
+    "test:e2e": "playwright test",
+    "lint": "biome check --fix",
+    "lint:ts:server": "cd server && tsc --noEmit",
+    "lint:ts:admin": "cd admin && tsc --noEmit"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.11",
+    "vitest": "^4.1.0",
+    "@playwright/test": "catalog:playwright",
+    "@strapi-community/dev-utils": "workspace:*",
+    "@strapi/sdk-plugin": "^6.0.0",
+    "@strapi/typescript-utils": "catalog:strapi",
+    "@types/koa": "^3.0.1",
+    "@types/lodash": "^4.17.21",
+    "@types/node": "^22",
+    "@types/react": "18",
+    "@types/styled-components": "^5.1.0",
+    "@types/supertest": "^6.0.0",
+    "supertest": "^7.0.0",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "@strapi/design-system": "^2.0.0",
+    "@strapi/icons": "^2.0.0",
+    "@strapi/strapi": "^5.0.0",
+    "@strapi/utils": "^5.0.0",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-query": "^3.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "react-router-dom": "^6.0.0",
+    "react-intl": "^6.0.0 || ^7.0.0",
+    "styled-components": "^5.0.0 || ^6.0.0"
+  },
+  "strapi": {
+    "kind": "plugin",
+    "name": "plugin-boilerplate",
+    "displayName": "Boilerplate",
+    "description": "An boilerplate plugin used to build upon"
+  },
+  "name": "@strapi-community/plugin-boilerplate",
+  "description": "An boilerplate plugin used to build upon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/strapi-community/plugin-boilerplate/issues"
+  },
+  "homepage": "https://github.com/strapi-community/plugin-boilerplate",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strapi-community/plugin-boilerplate.git",
+    "directory": "plugins/plugin-boilerplate"
+  },
+  "author": "Boaz Poolman <boaz.poolman@strapi.io>"
+}

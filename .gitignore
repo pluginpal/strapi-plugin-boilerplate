@@ -1,145 +1,37 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-############################
-# OS X
-############################
-
-.DS_Store
-.AppleDouble
-.LSOverride
-Icon
-.Spotlight-V100
-.Trashes
-._*
-
-
-############################
-# Linux
-############################
-
-*~
-
-
-############################
-# Windows
-############################
-
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-*.cab
-*.msi
-*.msm
-*.msp
-
-
-############################
-# Packages
-############################
-
-*.7z
-*.csv
-*.dat
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.seed
-*.so
-*.swo
-*.swp
-*.swn
-*.swm
-*.out
-*.pid
-
-
-############################
-# Logs and databases
-############################
-
-.tmp
-*.log
-*.sql
-*.sqlite
-*.sqlite3
-
-
-############################
-# Misc.
-############################
-
-*#
-ssl
-.idea
-nbproject
-.tsbuildinfo
-.eslintcache
-
-
-############################
-# Strapi
-############################
-
-public/uploads/*
-!public/uploads/.gitkeep
-
-
-############################
-# Build
-############################
-
-dist
-build
-
-
-############################
-# Node.js
-############################
-
-lib-cov
-lcov.info
-pids
-logs
-results
+# Dependencies
 node_modules
-.node_history
+.pnp
+.pnp.js
 
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-############################
-# Package managers
-############################
-
-.yarn/*
-!.yarn/cache
-!.yarn/unplugged
-!.yarn/patches
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-.pnp.*
-yarn-error.log
-
-
-############################
-# Tests
-############################
-
+# Testing
 coverage
 
-############################
-# Cypress
-############################
+# Turbo
+.turbo
 
-cypress/screenshots/
-cypress/videos/
-cypress/downloads/
+# Vercel
+.vercel
+
+# Build Outputs
+.next/
+out/
+build
+dist
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Misc
+.DS_Store
+*.pem

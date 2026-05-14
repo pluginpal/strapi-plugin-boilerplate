@@ -1,28 +1,31 @@
 {
-  "name": "strapi-plugin-boilerplate-monorepo",
+  "name": "boilerplate",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "turbo run format",
-    "test": "turbo run test",
-    "test:ts:front": "turbo run test:ts:front",
-    "test:ts:back": "turbo run test:ts:back",
-    "test:jest": "turbo run test:jest",
-    "test:e2e": "yarn workspace e2e test",
-    "verify": "turbo run verify",
-    "playground:build": "yarn workspace playground build",
-    "playground:develop": "yarn workspace playground develop",
-    "playground:start": "yarn workspace playground start"
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "dev:postgres": "DATABASE_CLIENT=postgres DATABASE_NAME=strapi with-db turbo dev",
+    "dev:mysql": "DATABASE_CLIENT=mysql DATABASE_NAME=strapi with-db turbo dev",
+    "lint": "turbo lint",
+    "lint:ts": "turbo lint:ts:admin lint:ts:server",
+    "test:integration": "DATABASE_CLIENT=sqlite with-db turbo test:integration",
+    "test:integration:postgres": "DATABASE_CLIENT=postgres with-db turbo test:integration",
+    "test:integration:mysql": "DATABASE_CLIENT=mysql with-db turbo test:integration",
+    "test:e2e": "DATABASE_CLIENT=sqlite with-db turbo test:e2e",
+    "test:e2e:postgres": "DATABASE_CLIENT=postgres with-db turbo test:e2e",
+    "test:e2e:mysql": "DATABASE_CLIENT=mysql with-db turbo test:e2e",
+    "update-dependencies": "pnpm --recursive --interactive --latest update",
+    "prepare": "husky"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.0",
-    "turbo": "^2.3.0"
+    "@strapi-community/dev-utils": "workspace:*",
+    "@types/node": "^22.0.0",
+    "husky": "9.1.7",
+    "lint-staged": "^16.4.0",
+    "turbo": "^2.6.3"
   },
-  "packageManager": "yarn@1.22.22"
+  "packageManager": "pnpm@10.18.1",
+  "engines": {
+    "node": ">=22"
+  }
 }

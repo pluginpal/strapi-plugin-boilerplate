@@ -1,91 +1,194 @@
-<div align="center">
-  <h1>Strapi v5 Plugin Boilerplate</h1>
-  <h5>A test-driven template for building reliable Strapi v5 Plugins</h5>
+# Strapi Plugin Boilerplate
 
-  <a href="https://codecov.io/gh/pluginpal/strapi-plugin-boilerplate">
-    <img src="https://img.shields.io/github/actions/workflow/status/pluginpal/strapi-plugin-boilerplate/tests.yml?branch=main" alt="CI build status" />
-  </a>
-</div>
+A production-ready starter template for building Strapi v5 plugins. Clone this repo, rename the plugin, and start building — the development environment, test infrastructure, linting, and CI pipeline are already wired up.
 
-## ✨ Features
+---
 
-- [x] Setup using [@strapi/sdk-plugin](https://github.com/strapi/sdk-plugin) with commands for `build` and `watch`.
-- [x] An isolated Strapi instance for testing and development, the Playground.
-- [x] Github Actions workflow for linting and testing.
-- [x] Clear community files like [CONTRIBUTING.md](https://github.com/pluginpal/strapi-plugin-boilerplate/blob/main/CONTRIBUTING.md) and [CODE-OF-CONDUCT.md](https://github.com/pluginpal/strapi-plugin-boilerplate/blob/main/CODE_OF_CONDUCT.md).
-- [x] Jest & Supertest for testing your plugin API's.
-- [x] Cypress for GUI e2e tests
+## What's included
 
-## ⏳ How to use
+### Monorepo structure
 
-This repository is meant to be a template for new plugins. It can be used as a starting point, giving you the resources to built a test-driven Strapi v5 plugin.
+```
+apps/
+  playground/          # Full Strapi v5 app with the plugin installed
+packages/
+  dev-utils/           # Shared test utilities (setupStrapi, Playwright config, DB helpers)
+plugins/
+  plugin-boilerplate/  # The plugin itself (admin + server)
+```
 
-After creating your copy of the template, do a find-replace through the code and change the following:
+Managed with **pnpm workspaces** and **Turborepo**. Strapi and Playwright versions are pinned in the workspace catalog so all packages stay in sync.
 
-1. Change `boilerplate` (lowercase) to be the identifier of your plugin.
-2. Change `Boilerplate` (uppercase) to be the human readable name of your plugin.
+### The plugin
 
-You're all set! Go make your plugin and write some tests!
+The plugin ships with a minimal but complete scaffold:
 
-## 📓 Tutorials
+**Server**
+- A service (`services/service.ts`) with a `getWelcomeMessage()` method
+- A controller (`controllers/controller.ts`) that calls the service and returns the response
+- A content-API route (`GET /api/plugin-boilerplate`) wired to the controller
+- Empty stubs for admin routes, content-types, policies, middlewares, bootstrap, register, and destroy
 
-This repository has been made alongside an article series called **"Automated Testing for Strapi v5 Plugins"**.
-To better understand how and why this repository has been setup, please read the following articles:
+**Admin**
+- A menu link that registers the plugin in the Strapi sidebar
+- A `HomePage` component rendered at `/admin/plugins/plugin-boilerplate`
+- An `Initializer` component that marks the plugin as ready on mount
+- i18n setup via `react-intl` with a `translations/en.json` file ready to populate
+- A `getTranslation` helper that namespaces keys under the plugin ID
 
-1. [Using a Playground Instance](https://www.pluginpal.io/automated-testing-for-strapi-plugins-using-a-playground-instance)
-2. [Testing the API's](https://www.pluginpal.io/automated-testing-for-strapi-v-5-plugins-testing-the-apis)
-3. E2E tests (In Progress)
+### Testing
 
-## 🔌 Commands
+Two test layers are included out of the box:
 
-### Strapi Plugin SDK commands
+**Integration tests** (Vitest + Supertest) — `server/test/example.test.ts`
+- Starts a real Strapi instance using `setupStrapi()` from dev-utils
+- Creates an API token programmatically for authenticated requests
+- Tests the content-API endpoint over HTTP
+- Tests the service method directly
 
-1. `yarn build`
-  - The native build command of `@strapi/sdk-plugin`.
-  - [Documentation can be found here](https://docs.strapi.io/dev-docs/plugins/development/plugin-sdk).
-2. `yarn watch`
-  - The native watch command of `@strapi/sdk-plugin`.
-  - [Documentation can be found here](https://docs.strapi.io/dev-docs/plugins/development/plugin-sdk).
-3. `yarn watch:link`
-  - The native watch:link command of `@strapi/sdk-plugin`.
-  - [Documentation can be found here](https://docs.strapi.io/dev-docs/plugins/development/plugin-sdk).
-4. `yarn verify`
-  - The native verify command of `@strapi/sdk-plugin`.
-  - [Documentation can be found here](https://docs.strapi.io/dev-docs/plugins/development/plugin-sdk).
-  - Used in the lint step of the pipeline.
+**E2E tests** (Playwright) — `admin/test/example.spec.ts`
+- Starts the playground app automatically (or reuses a running instance)
+- Authenticates as an admin user via `admin/test/setup/auth.setup.ts`
+- Navigates to the plugin's admin page and checks the rendered UI
 
-### Testing commands
+### Dev utilities (`packages/dev-utils`)
 
-5. `yarn test:ts:front`
-  - A check for Typescript errors on the front-end side.
-  - Used in the lint step of the pipeline.
-6. `yarn test:ts:back`
-  - A check for Typescript errors on the back-end side.
-  - Used in the lint step of the pipeline.
-7. `yarn test:jest`
-  - Runs the jest tests. Can contain unit & integration tests.
-  - Used in the test step of the pipeline.
-8. `yarn test:cypress`
-  - Runs the cypress tests. Contains e2e tests.
-  - Used in the test step of the pipeline.
-9. `yarn test:cypress:open`
-  - Opens the cypress GUI.
+A shared internal package used by both test layers:
 
-### Playground commands
+| Export | What it does |
+|---|---|
+| `setupStrapi()` | Boots a Strapi instance from the playground for integration tests |
+| `stopStrapi()` | Tears the instance down and cleans up |
+| `createPlaywrightConfig(options)` | Returns a full Playwright config with webServer, auth projects, and DB setup |
+| `registerAuthSetup(authFilePath)` | Registers the Playwright auth setup test (login + save session) |
+| `with-db` (bin) | Wraps a command with an ephemeral DB — SQLite file or Postgres/MySQL database — and cleans it up on exit |
 
-10. `yarn playground:install`
-  - Installs the plugin into the playground using `yalc-add-link`.
-  - Installs all other dependencies of the playground.
-11. `yarn playground:yalc-add`
-  - Installs a production-like version of the plugin, into the playground.
-12. `yarn playground:yalc-add-link`
-  - Installs a development build of the plugin, into the playground.
-13. `yarn playground:build`
-  - The native Strapi build command, ran in the playground.
-  - [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
-14. `yarn playground:develop`
-  - The native Strapi develop command, ran in the playground.
-  - [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
-15. `yarn playground:start`
-  - The native Strapi start command, ran in the playground.
-  - [Documentation can be found here](https://docs.strapi.io/dev-docs/cli).
+### Linting
+
+**Biome** handles both formatting and linting across the entire monorepo. It replaces ESLint and Prettier with a single fast tool. Config lives in `biome.json` at the root.
+
+**lint-staged** runs automatically on every commit via a Husky `pre-commit` hook. It checks only the files you've staged:
+
+- `*.{ts,tsx,js,json,...}` — Biome lint + format (`pnpm run lint`)
+- `*.{ts,tsx,...}` — TypeScript type-check (`pnpm run lint:ts:server`)
+
+### CI
+
+GitHub Actions runs the full matrix on every push and PR to `main`/`develop`:
+
+- **Node versions:** 22 and 24
+- **Databases:** SQLite, Postgres, MySQL (run in parallel)
+- **Jobs:** lint → TypeScript check → integration tests → E2E tests
+- **Caching:** `node_modules`, built `dist`, and Playwright browser cache are all cached between runs
+- **Artifacts:** Playwright HTML reports are uploaded on failure (30-day retention)
+
+---
+
+## Getting started
+
+### Prerequisites
+
+- Node.js >= 22
+- pnpm >= 10.18.1
+
+### Install dependencies
+
+```bash
+pnpm install
+```
+
+### Start developing
+
+```bash
+pnpm dev              # SQLite (default)
+pnpm dev:postgres     # Postgres (requires Docker)
+pnpm dev:mysql        # MySQL (requires Docker)
+```
+
+This starts the playground Strapi app with file-watching. Changes to the plugin's `server/src` or `admin/src` are picked up automatically.
+
+### Rename the plugin
+
+1. Replace all occurrences of `plugin-boilerplate` with your plugin name in:
+   - `plugins/plugin-boilerplate/package.json` (`name`, `strapi.name`, `strapi.displayName`)
+   - `plugins/plugin-boilerplate/admin/src/pluginId.ts`
+   - `apps/playground/package.json` (the workspace dependency)
+2. Rename the directory `plugins/plugin-boilerplate/` to match
+
+---
+
+## Running tests
+
+All test commands are run from the repo root.
+
+### Integration tests
+
+Tests the server-side code (controllers, services, routes) against a real Strapi instance.
+
+```bash
+pnpm test:integration           # SQLite
+pnpm test:integration:postgres  # Postgres (requires Docker)
+pnpm test:integration:mysql     # MySQL (requires Docker)
+```
+
+### E2E tests
+
+Tests the admin UI end-to-end in a real browser. Playwright starts the playground automatically if it isn't already running.
+
+```bash
+pnpm test:e2e           # SQLite
+pnpm test:e2e:postgres  # Postgres (requires Docker)
+pnpm test:e2e:mysql     # MySQL (requires Docker)
+```
+
+---
+
+## Other commands
+
+```bash
+pnpm build       # Build all packages and the plugin
+pnpm lint        # Lint and format with Biome
+pnpm lint:ts     # TypeScript type-check (admin + server)
+```
+
+---
+
+## Plugin structure reference
+
+```
+plugins/plugin-boilerplate/
+├── admin/
+│   ├── src/
+│   │   ├── index.ts                  # Plugin registration (menu link, lazy page load)
+│   │   ├── pluginId.ts               # PLUGIN_ID constant
+│   │   ├── pages/
+│   │   │   ├── App.tsx               # Route wrapper
+│   │   │   └── HomePage.tsx          # Main plugin page
+│   │   ├── components/
+│   │   │   ├── Initializer.tsx       # Marks plugin ready on mount
+│   │   │   └── PluginIcon.tsx        # Sidebar icon
+│   │   ├── utils/getTranslation.ts   # i18n key helper
+│   │   └── translations/en.json      # English strings
+│   └── test/
+│       ├── setup/auth.setup.ts       # Playwright auth setup
+│       └── example.spec.ts           # E2E tests
+├── server/
+│   ├── src/
+│   │   ├── index.ts                  # Plugin export (lifecycle + features)
+│   │   ├── bootstrap.ts              # Startup hook
+│   │   ├── register.ts               # Register hook
+│   │   ├── destroy.ts                # Teardown hook
+│   │   ├── config/index.ts           # Plugin config schema
+│   │   ├── controllers/controller.ts # Request handler
+│   │   ├── services/service.ts       # Business logic
+│   │   ├── routes/
+│   │   │   ├── content-api/index.ts  # Public API routes
+│   │   │   └── admin/index.ts        # Admin panel routes
+│   │   ├── content-types/index.ts    # Custom content types
+│   │   ├── policies/index.ts         # Custom policies
+│   │   └── middlewares/index.ts      # Custom middlewares
+│   └── test/
+│       └── example.test.ts           # Integration tests
+├── playwright.config.ts
+└── vitest.config.ts
+```
