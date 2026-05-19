@@ -1,0 +1,40 @@
+{
+  "name": "strapi-plugin-factory",
+  "version": "0.0.0",
+  "description": "Interactive scaffolder for Strapi v5 plugins, powered by the strapi-plugin-boilerplate template.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "strapi-plugin-factory": "./dist/index.cjs"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "start": "node ./dist/index.cjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.7.0",
+    "execa": "^9.0.0",
+    "giget": "^1.2.3",
+    "picocolors": "^1.0.1",
+    "validate-npm-package-name": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/validate-npm-package-name": "^4.0.2",
+    "memfs": "^4.9.3",
+    "tsup": "^8.0.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
