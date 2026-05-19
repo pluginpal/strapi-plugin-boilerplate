@@ -10,6 +10,7 @@ import { readGitDefaults } from "./defaults.js";
 import { defaultAnswers, runPrompts } from "./prompts.js";
 import { applyTransforms } from "./transform/index.js";
 import { hasPnpm, initGit, installDependencies } from "./post-scaffold.js";
+import { printBanner } from "./banner.js";
 
 function readPkgVersion(): string {
   const here = dirname(fileURLToPath(import.meta.url));
@@ -35,7 +36,9 @@ async function main(): Promise<void> {
     return;
   }
 
-  intro(pc.bgCyan(pc.black(" strapi-plugin-factory ")));
+  printBanner(readPkgVersion());
+  process.stdout.write("\n");
+  intro(pc.magenta(pc.bold(" strapi-plugin-factory ")));
 
   const ref = flags.ref ?? DEFAULT_TEMPLATE_REF;
   const initialDir = flags.dir ?? ".";
