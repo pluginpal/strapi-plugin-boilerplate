@@ -70,12 +70,12 @@
   "description": "An boilerplate plugin used to build upon",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/strapi-community/plugin-boilerplate/issues"
+    "url": "https://github.com/pluginpal/strapi-plugin-boilerplate/issues"
   },
-  "homepage": "https://github.com/strapi-community/plugin-boilerplate",
+  "homepage": "https://github.com/pluginpal/strapi-plugin-boilerplate",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/strapi-community/plugin-boilerplate.git",
+    "url": "git+https://github.com/pluginpal/strapi-plugin-boilerplate.git",
     "directory": "plugins/plugin-boilerplate"
   },
   "author": "Boaz Poolman <boaz.poolman@strapi.io>"

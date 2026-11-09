@@ -16,6 +16,9 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   release:
     name: Release
+    # Skipped in the boilerplate repo itself: it is a template and is never released.
+    # Repos created from this boilerplate have a different name, so releases run there.
+    if: github.repository != 'pluginpal/strapi-plugin-boilerplate'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo

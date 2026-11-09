@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/@changesets/config@4.0.1/schema.json",
   "changelog": [
     "@changesets/changelog-github",
-    { "repo": "strapi-community/plugin-boilerplate" }
+    { "repo": "pluginpal/strapi-plugin-boilerplate" }
   ],
   "commit": false,
   "privatePackages": {

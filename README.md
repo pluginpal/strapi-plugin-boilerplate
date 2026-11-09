@@ -196,6 +196,8 @@ When changes with changesets land on `main`, the `Release` workflow (`.github/wo
 
 Private workspace packages (`apps/playground`, `packages/dev-utils`) are never versioned or published.
 
+> **Note:** the release job is skipped in the `pluginpal/strapi-plugin-boilerplate` repo itself, since the boilerplate is a template and is never released. In a repo created from it, releases work without any changes.
+
 **Setup:** the workflow publishes with npm [trusted publishing](https://docs.npmjs.com/trusted-publishers) (OIDC, `id-token: write`), so configure this repository and the `release.yml` workflow as a trusted publisher for your package on npmjs.com. Also enable *Settings → Actions → General → Allow GitHub Actions to create and approve pull requests* so the Version Packages PR can be opened.
 
 ---
