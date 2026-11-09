@@ -88,6 +88,23 @@ GitHub Actions runs the full matrix on every push and PR to `main`/`develop`:
 
 Versioning, changelogs, and npm publishing are handled by [Changesets](https://github.com/changesets/changesets). On every push to `main`, the `Release` workflow either opens/updates a **Version Packages** PR (when there are pending changesets) or, once that PR is merged, builds the plugin and publishes it to npm. See [Releasing](#releasing) for details.
 
+### AI-assisted development
+
+The repo is set up for coding agents (Claude Code, Cursor, Codex, Copilot, …):
+
+- **`AGENTS.md`**: the repo's conventions, commands and testing layout, read by any agent.
+  `CLAUDE.md` imports it for Claude Code.
+- **[strapi-skills](https://github.com/ayhid/strapi-skills)**: Strapi v5 skills for plugin code,
+  admin UI and testing, plus reviewer agents and commands. They are referenced, not copied:
+  `.claude/settings.json` registers the marketplace, and Claude Code offers to install the plugin
+  when you trust the folder. For other agents: `npx skills add ayhid/strapi-skills`.
+- **[Strapi Design System](https://claude.ai/artifact/DGS9jjvAL6zT3NKEfNBQgc)**: the admin's visual
+  language and component guidance, read live by the `strapi-design-system` skill.
+- **`.claude/brain/`**: what has been learned about working on the repo (a glossary, checked facts and a
+  retro log), committed so every session starts from it. Say *"remember that"* or *"that went
+  wrong"* and the `brain-remember` and `brain-retro` skills write to it. Adapted from
+  [brain-template](https://github.com/derrickmehaffy/brain-template).
+
 ---
 
 ## Getting started
