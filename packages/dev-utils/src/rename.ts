@@ -206,7 +206,23 @@ async function main() {
   updateFile(join(repoRoot, "README.md"), readmeReplacements);
   console.log("  - README.md");
 
-  // 9. Rename plugin directory
+  // 9. .changeset/config.json — point the GitHub changelog at the new repo
+  const changesetConfigPath = join(repoRoot, ".changeset/config.json");
+  if (githubOrg && githubRepo && existsSync(changesetConfigPath)) {
+    const changesetConfig = JSON.parse(readFileSync(changesetConfigPath, "utf-8"));
+    const changelog = changesetConfig.changelog;
+    if (Array.isArray(changelog) && changelog[1] && typeof changelog[1] === "object") {
+      changelog[1].repo = `${githubOrg}/${githubRepo}`;
+      writeFileSync(
+        changesetConfigPath,
+        `${JSON.stringify(changesetConfig, null, 2)}\n`,
+        "utf-8",
+      );
+      console.log("  - .changeset/config.json");
+    }
+  }
+
+  // 10. Rename plugin directory
   if (currentDir !== pluginName) {
     renameSync(pluginDir, join(pluginsRoot, pluginName));
     console.log(`  - Renamed plugins/${currentDir}/ → plugins/${pluginName}/`);

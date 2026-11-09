@@ -84,6 +84,10 @@ GitHub Actions runs the full matrix on every push and PR to `main`/`develop`:
 - **Caching:** `node_modules`, built `dist`, and Playwright browser cache are all cached between runs
 - **Artifacts:** Playwright HTML reports are uploaded on failure (30-day retention)
 
+### Releases
+
+Versioning, changelogs, and npm publishing are handled by [Changesets](https://github.com/changesets/changesets). On every push to `main`, the `Release` workflow either opens/updates a **Version Packages** PR (when there are pending changesets) or, once that PR is merged, builds the plugin and publishes it to npm. See [Releasing](#releasing) for details.
+
 ---
 
 ## Getting started
@@ -131,7 +135,7 @@ It will prompt you for:
 | GitHub repository name | `strapi-plugin-my-awesome-plugin` |
 | License | `MIT` |
 
-Press Enter to keep any current value. When finished, the command updates all references across the repo (package names, plugin IDs, route paths, test URLs, README) and renames the `plugins/` directory. Then run:
+Press Enter to keep any current value. When finished, the command updates all references across the repo (package names, plugin IDs, route paths, test URLs, README, changeset changelog repo) and renames the `plugins/` directory. Then run:
 
 ```bash
 pnpm install
@@ -172,7 +176,27 @@ pnpm test:e2e:mysql     # MySQL (requires Docker)
 pnpm build       # Build all packages and the plugin
 pnpm lint        # Lint and format with Biome
 pnpm lint:ts     # TypeScript type-check (admin + server)
+pnpm changeset   # Add a changeset describing your change
 ```
+
+---
+
+## Releasing
+
+Releases are managed with [Changesets](https://github.com/changesets/changesets). If your change affects the published plugin, add a changeset describing it and commit it along with your change:
+
+```bash
+pnpm changeset
+```
+
+When changes with changesets land on `main`, the `Release` workflow (`.github/workflows/release.yml`):
+
+1. Opens (or updates) a **Version Packages** PR that bumps the plugin version and updates its `CHANGELOG.md` (`pnpm release:prepare`). The `Tests` workflow is dispatched for that PR automatically.
+2. When the Version Packages PR is merged, builds the plugin and publishes it to npm (`pnpm release:publish`).
+
+Private workspace packages (`apps/playground`, `packages/dev-utils`) are never versioned or published.
+
+**Setup:** the workflow publishes with npm [trusted publishing](https://docs.npmjs.com/trusted-publishers) (OIDC, `id-token: write`), so configure this repository and the `release.yml` workflow as a trusted publisher for your package on npmjs.com. Also enable *Settings → Actions → General → Allow GitHub Actions to create and approve pull requests* so the Version Packages PR can be opened.
 
 ---
 
