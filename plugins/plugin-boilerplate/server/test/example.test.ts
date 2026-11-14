@@ -1,4 +1,4 @@
-import { setupStrapi, stopStrapi } from "@strapi-community/dev-utils";
+import { setupStrapi, stopStrapi } from "@pluginpal/dev-utils";
 import request from "supertest";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 

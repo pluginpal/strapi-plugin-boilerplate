@@ -1,5 +1,5 @@
 {
-  "name": "@strapi-community/dev-utils",
+  "name": "@pluginpal/dev-utils",
   "version": "0.0.1",
   "private": true,
   "exports": {

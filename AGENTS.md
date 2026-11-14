@@ -67,7 +67,7 @@ use `pnpm rename-plugin`.
 The skills describe a generic plugin layout. Here:
 
 - **Fixture app:** `apps/playground`. Its config and content types are what integration tests run against.
-- **Harness:** `setupStrapi()` / `stopStrapi()` from `@strapi-community/dev-utils`, which boot the
+- **Harness:** `setupStrapi()` / `stopStrapi()` from `@pluginpal/dev-utils`, which boot the
   playground with an isolated database. See `plugins/<plugin>/server/test/example.test.ts`.
 - **Integration tests:** `server/test/**/*.test.ts`, the only pattern `vitest.config.ts` includes.
   Pure unit tests need their own include pattern (and ideally their own Vitest project) so they run

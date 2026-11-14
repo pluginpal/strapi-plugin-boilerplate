@@ -24,7 +24,7 @@
   "devDependencies": {
     "@changesets/changelog-github": "^1.0.1",
     "@changesets/cli": "^3.0.3",
-    "@strapi-community/dev-utils": "workspace:*",
+    "@pluginpal/dev-utils": "workspace:*",
     "@types/node": "^22.0.0",
     "husky": "9.1.7",
     "lint-staged": "^16.4.0",

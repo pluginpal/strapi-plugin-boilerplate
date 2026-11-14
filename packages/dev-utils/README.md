@@ -1,4 +1,4 @@
-# @strapi-community/dev-utils
+# @pluginpal/dev-utils
 
 Internal dev tooling for the `plugin-boilerplate` monorepo. Not published to npm.
 
@@ -13,7 +13,7 @@ Internal dev tooling for the `plugin-boilerplate` monorepo. Not published to npm
 
 ### TypeScript API
 
-Imported via `@strapi-community/dev-utils` in test files.
+Imported via `@pluginpal/dev-utils` in test files.
 
 #### `setupStrapi()`
 
@@ -71,7 +71,7 @@ DATABASE_CLIENT=postgres DATABASE_NAME=strapi with-db <command>
 ### Integration tests
 
 ```ts
-import { setupStrapi, stopStrapi } from "@strapi-community/dev-utils";
+import { setupStrapi, stopStrapi } from "@pluginpal/dev-utils";
 
 beforeAll(setupStrapi);
 afterAll(stopStrapi);
@@ -81,11 +81,11 @@ afterAll(stopStrapi);
 
 ```ts
 // playwright.config.ts
-import { createPlaywrightConfig } from "@strapi-community/dev-utils";
+import { createPlaywrightConfig } from "@pluginpal/dev-utils";
 export default createPlaywrightConfig({ testDir: "./admin/test" });
 
 // setup/auth.setup.ts
-import { registerAuthSetup } from "@strapi-community/dev-utils";
+import { registerAuthSetup } from "@pluginpal/dev-utils";
 registerAuthSetup(`${__dirname}/../.auth/user.json`);
 ```
 

@@ -30,7 +30,7 @@ importers:
       '@changesets/cli':
         specifier: ^3.0.3
         version: 3.0.3
-      '@strapi-community/dev-utils':
+      '@pluginpal/dev-utils':
         specifier: workspace:*
         version: link:packages/dev-utils
       '@types/node':
@@ -48,7 +48,7 @@ importers:
 
   apps/playground:
     dependencies:
-      '@strapi-community/plugin-boilerplate':
+      '@pluginpal/plugin-boilerplate':
         specifier: workspace:*
         version: link:../../plugins/plugin-boilerplate
       '@strapi/strapi':
@@ -82,7 +82,7 @@ importers:
       '@biomejs/biome':
         specifier: ^2.3.11
         version: 2.3.11
-      '@strapi-community/dev-utils':
+      '@pluginpal/dev-utils':
         specifier: workspace:*
         version: link:../../packages/dev-utils
       '@types/node':
@@ -155,7 +155,7 @@ importers:
       '@playwright/test':
         specifier: catalog:playwright
         version: 1.49.0
-      '@strapi-community/dev-utils':
+      '@pluginpal/dev-utils':
         specifier: workspace:*
         version: link:../../packages/dev-utils
       '@strapi/sdk-plugin':
